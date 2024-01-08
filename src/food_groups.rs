@@ -1,4 +1,4 @@
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub(crate) enum Carbs {
     CousCous,
     Pasta,
@@ -6,7 +6,7 @@ pub(crate) enum Carbs {
     Rice,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub(crate) enum Protein {
     Beef,
     Chicken,

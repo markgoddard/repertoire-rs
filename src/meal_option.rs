@@ -15,6 +15,8 @@ impl MealOption {
     }
 
     pub(crate) fn select(&self, carbs: Carbs, protein: Protein) -> Meal {
+        assert!(self.carbs.contains(&carbs));
+        assert!(self.protein.contains(&protein));
         Meal::new(self.name.as_str(), carbs, protein)
     }
 }
