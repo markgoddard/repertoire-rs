@@ -4,18 +4,17 @@ use crate::meal::Meal;
 #[derive(Clone, Debug)]
 pub(crate) struct MealOption {
     pub name: String,
-    pub carbs: Option<Vec<Carbs>>,
-    pub protein: Option<Vec<Protein>>,
+    pub carbs: Vec<Carbs>,
+    pub protein: Vec<Protein>,
 }
 
 impl MealOption {
-    pub(crate) fn new(name: &str, carbs: Option<&[Carbs]>, protein: Option<&[Protein]>) -> Self
+    pub(crate) fn new(name: &str, carbs: &[Carbs], protein: &[Protein]) -> Self
     {
-        Self { name: name.to_string(), carbs: carbs.map(|c| c.to_vec()), protein: protein.map(|p| p.to_vec()), }
+        Self { name: name.to_string(), carbs: carbs.to_vec(), protein: protein.to_vec(), }
     }
 
-    pub(crate) fn as_meal(&self, carbs: Option<Carbs>, protein: Option<Protein>) -> Meal {
-        // TODO: Validate carbs and protein
-        Meal::new("foo", carbs, protein)
+    pub(crate) fn select(&self, carbs: Carbs, protein: Protein) -> Meal {
+        Meal::new(self.name.as_str(), carbs, protein)
     }
 }

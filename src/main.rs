@@ -10,11 +10,11 @@ use crate::plan::Plan;
 use crate::repertoire::Repertoire;
 
 fn main() {
-    let meal = MealOption::new("Carbonara", Some(&[Carbs::Pasta]), Some(&[Protein::Pork]));
+    let meal = MealOption::new("Carbonara", &[Carbs::Pasta], &[Protein::Pork]);
     let repertoire = Repertoire::new(&[meal]);
     let mut plan = Plan::new();
     for meal in repertoire.meals.iter() {
-        plan.add(meal.as_meal(Some(Carbs::Pasta), Some(Protein::Pork)))
+        plan.add(meal.select(Carbs::Pasta, Protein::Pork))
     }
     println!("Repertoire: {:?}", repertoire);
     println!("Plan: {:?}", plan);
