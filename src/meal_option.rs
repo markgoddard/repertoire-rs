@@ -1,7 +1,7 @@
 use crate::food_groups::{Carbs, Protein};
 use crate::meal::Meal;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub(crate) struct MealOption {
     pub name: String,
     pub carbs: Vec<Carbs>,
